@@ -1,20 +1,18 @@
 import React from "react";
 import reactDom from "react-dom";
 
-// const Greeting = () => {
-//   return React.createElement(
-//     "div",
-//     {},
-//     React.createElement("h1", {}, "Hello World!")
-//   );
-// };
+//nested components
 
 function Greeting() {
   return (
     <div>
-      <h2>Hello World!</h2>
+      <Person />
+      <Message />
     </div>
   );
 }
-
+const Person = () => <h2>Jhon Doe</h2>;
+const Message = () => {
+  return <p>This is a message</p>;
+};
 reactDom.render(<Greeting />, document.getElementById("root"));
