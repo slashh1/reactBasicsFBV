@@ -1,47 +1,33 @@
 import React from "react";
 import reactDom from "react-dom";
 import "./index.css";
-//adding css through jsx
+//
+
 function BookList() {
   return (
     <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+      <Book job="developer" />
+      <Book title="Random Title" number={32} />
     </section>
   );
 }
 
-const Book = () => {
+const title = "The Alchemist";
+const author = "Paulo Coelho";
+const img =
+  "https://cdn.pixabay.com/photo/2017/03/15/16/28/alchemy-2146679_640.jpg";
+
+const Book = (props) => {
+  console.log(props);
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img src={img} alt="" width="250px" height="150px" />
+      <h1>{title}</h1>
+      <h4>{author.toUpperCase()}</h4>
+      <p>{props.title}</p>
+      <p>{props.job}</p>
+      <p>{props.number}</p>
     </article>
-  );
-};
-
-const Image = () => {
-  return (
-    <img
-      src="https://cdn.pixabay.com/photo/2017/03/15/16/28/alchemy-2146679_640.jpg"
-      alt="The alcmeist cover"
-      width="250px"
-      height="150px"
-    />
-  );
-};
-const Title = () => {
-  return <h1>The Alchemist</h1>;
-};
-const Author = () => {
-  return (
-    <p style={{ color: "#617d98", fonstSize: "0.75rem", marginTop: "0.25rem" }}>
-      Paulo Coelho
-    </p>
   );
 };
 
