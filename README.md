@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+----------------React Basics Start-------------------
+import React from "react"
+import reactDdom from "react-dom";
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+reactDom.render(<Main_component />, document.getElementById("root"));
 
-## Available Scripts
+JSX rules: (function Class{return JSX})
+->always return single element
+->follow HTML scemantics ie.. section/ article/ div etc
+->use CamelCase for html atrribures
+->class - ClassName
+->close every element eg: <input/>,<img/> or it will give an error
+->return should have (JSX)
 
-In the project directory, you can run:
+Adding css:
+-> import css file using import "./index.css" in double quotations since react needs to know it and css is not a library or a node module
 
-### `npm start`
+Adding inline css: (pass an object within {} to add styles or any arguments)
+-> <tag style={{color:"#617d98",fonstSize:"0.75rem",marginTop:"0.25rem"}}></tag>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+JSX comments:
+-> {/_ comment _/}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+JSX statements:
+-> a value in jsx should always be a expression or a value it cannot be a statements
+eg: {let x=5;} //will give an error
+while {5+5} //will work
 
-### `npm test`
+passing props to components:
+-> props can be passed through function arguments and can be used by either props.property or destructuring the props using {property1,property2,property3} = props
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+passing children through props:
+-> children are the elements within the component tags eg: <Book><p>The para tag including tags is the children of the book component</p></Book>
+->we can use them in function using either {props.children} or destructure it using the {children} = props
 
-### `npm run build`
+DRY for passing elements through components:
+-> The easiest way to access the elements stored in a array would be to directly call the array in the component function
+eg: const CompFunc = ()=>{ return {array}; } but not that if the array contains an object there will be an error
+-> therefore we use the array.map((arr)=>{return <component obj={arr}/>}) and in the function destructure using props eg: {arr1,arr2,arr3} = props.obj and use them in our function
+->but even if we pass the obj through map there will be a warning for unique key for each component which has to be resolved using spread operator
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-> instead of passing obj in props we can directly pass the object using spread operator and the object will be laid out / spreaded out as arguments instead of a single object
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Synthetic events in React:
+-> Using reacts synthetic events we can use funxtions for on click - onClick etc to get what happens on function click and other events
+-> usage is similar using {} to call function but we can use arrow function if we want to call function using arguments. eg: onClick = {()=>clickHandler(author)}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Import Export statements:
+use Export default functionName once in the file and no other export statement to do a default export where you can change the name in the file where it is imported.
+use export function name to use it in the file as name export ie... import {funcName} from "./func";
+------------------------React Basics End----------------------
