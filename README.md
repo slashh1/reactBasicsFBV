@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ----------------React Basics Start-------------------
 import React from "react"
 import reactDdom from "react-dom";
@@ -49,3 +50,7 @@ Import Export statements:
 use Export default functionName once in the file and no other export statement to do a default export where you can change the name in the file where it is imported.
 use export function name to use it in the file as name export ie... import {funcName} from "./func";
 ------------------------React Basics End----------------------
+=======
+# react_basics_fbv
+React basics only function based views
+>>>>>>> 438f9698d5843fd01a937ab7b7ade461aea228cf
