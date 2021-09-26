@@ -1,53 +1,47 @@
 import React from "react";
 import reactDom from "react-dom";
 import "./index.css";
-//props with children
+//DRY principle for props using arrays
 
-const firstBook = {
-  img: "https://cdn.pixabay.com/photo/2017/03/15/16/28/alchemy-2146679_640.jpg",
-  title: "The Alchemist",
-  author: "Paulo Coelho",
-};
+// const names = ["michael", "jim", "dwight", "pam"];
 
-const secondBook = {
-  img: "https://cdn.pixabay.com/photo/2018/06/15/11/16/hogwarts-3476786__340.png",
-  title: "Harry Potter",
-  author: "J.K Rowling",
-};
-
+const books = [
+  {
+    img: "https://cdn.pixabay.com/photo/2017/03/15/16/28/alchemy-2146679_640.jpg",
+    title: "The Alchemist",
+    author: "Paulo Coelho",
+  },
+  {
+    img: "https://cdn.pixabay.com/photo/2018/06/15/11/16/hogwarts-3476786__340.png",
+    title: "Harry Potter",
+    author: "J.K Rowling",
+  },
+];
 function BookList() {
   return (
     <section className="booklist">
-      <Book
-        img={firstBook.img}
-        title={firstBook.title}
-        author={firstBook.author}
-      >
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quam
-          reprehenderit libero! Eos provident voluptas sit impedit non nulla
-          maxime.
-        </p>
-      </Book>
-      <Book
-        img={secondBook.img}
-        title={secondBook.title}
-        author={secondBook.author}
-      />
+      {/* {books} */}
+      {/* the above code will return an error because books array contain objects and react cannot render objects directly so we use the map function and return each object in a object in prop */}
+      {books.map((book) => {
+        return <Book book={book} />;
+      })}
+      {/* {names} */}
+      {/* since the above will return all object directly we can use map function to clean them and return each value in a single tag */}
+      {/* {names.map((name) => {
+        return <h1>{name}</h1>;
+      })} */}
     </section>
   );
 }
 
 const Book = (props) => {
-  // const Book = ({ img, title, author, children }) => { // using props directly by destructuring during function definition
-  // const { img, title, author, children } = props; //destructuring props and using them
   console.log(props);
+  const { img, title, author } = props.book;
   return (
     <article className="book">
-      <img src={props.img} alt="" width="250px" height="150px" />
-      <h1>{props.title}</h1>
-      <h4>{props.author}</h4>
-      {props.children}
+      <img src={img} alt="" width="250px" height="150px" />
+      <h1>{title}</h1>
+      <h4>{author}</h4>
     </article>
   );
 };
