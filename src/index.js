@@ -1,7 +1,7 @@
 import React from "react";
 import reactDom from "react-dom";
 import "./index.css";
-//nested components
+//adding css through jsx
 function BookList() {
   return (
     <section className="booklist">
@@ -38,7 +38,11 @@ const Title = () => {
   return <h1>The Alchemist</h1>;
 };
 const Author = () => {
-  return <p>Paulo Coelho</p>;
+  return (
+    <p style={{ color: "#617d98", fonstSize: "0.75rem", marginTop: "0.25rem" }}>
+      Paulo Coelho
+    </p>
+  );
 };
 
 reactDom.render(<BookList />, document.getElementById("root"));
