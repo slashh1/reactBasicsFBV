@@ -1,42 +1,42 @@
 import React from "react";
 import reactDom from "react-dom";
 import "./index.css";
-//DRY principle for props using arrays
-
-// const names = ["michael", "jim", "dwight", "pam"];
+//DRY principle for props using spread operator and removing key warning
 
 const books = [
   {
+    id: 1,
     img: "https://cdn.pixabay.com/photo/2017/03/15/16/28/alchemy-2146679_640.jpg",
     title: "The Alchemist",
     author: "Paulo Coelho",
   },
   {
+    id: 2,
     img: "https://cdn.pixabay.com/photo/2018/06/15/11/16/hogwarts-3476786__340.png",
     title: "Harry Potter",
     author: "J.K Rowling",
+  },
+  {
+    id: 3,
+    img: "https://images-na.ssl-images-amazon.com/images/I/51Z-XJXiQnL._SX396_BO1,204,203,200_.jpg",
+    title: "C++ Programming Language, The",
+    author: "Bjarne Stroustrup",
   },
 ];
 function BookList() {
   return (
     <section className="booklist">
-      {/* {books} */}
-      {/* the above code will return an error because books array contain objects and react cannot render objects directly so we use the map function and return each object in a object in prop */}
       {books.map((book) => {
-        return <Book book={book} />;
+        // once we return the key which has to be a unique value for a component the warning is resolved
+        return <Book key={book.id} {...book} />;
       })}
-      {/* {names} */}
-      {/* since the above will return all object directly we can use map function to clean them and return each value in a single tag */}
-      {/* {names.map((name) => {
-        return <h1>{name}</h1>;
-      })} */}
     </section>
   );
 }
 
 const Book = (props) => {
   console.log(props);
-  const { img, title, author } = props.book;
+  const { img, title, author } = props;
   return (
     <article className="book">
       <img src={img} alt="" width="250px" height="150px" />
